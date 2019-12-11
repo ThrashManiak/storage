@@ -1,15 +1,15 @@
-//<!--Calling onDeviceReady method-->
+//<!-Llamando al método onDeviceReady-->
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 
-//<!--window.sqlitePlugin.openDatabase creates/open a non existing/existing database-->
+//<!--window.sqlitePlugin.openDatabase crea / abre una base de datos no existente / existente-->
 var db = window.sqlitePlugin.openDatabase({name: "my.db"});
 show();
 db.transaction(function(tx) {
 tx.executeSql('CREATE TABLE IF NOT EXISTS mydata (id integer primary key, name text, email text)');
 });
 
-//<!--Method to insert new row in the database-->
+//<!--Método para insertar una nueva fila en la base de datos-->
 $(document).on('click', '#creat', function(){
 var name = $("#name").val();
 var email = $("#email").val();
@@ -25,7 +25,7 @@ function(error){
 });
 });
 
-//<!--Display all rows stored in the database-->
+//<!--Mostrar todas las filas almacenadas en la base de datos-->
 function show(){
 db.transaction(function(transaction) {
 transaction.executeSql('SELECT * FROM mydata', [], function (tx, results) {
@@ -35,7 +35,7 @@ var key = "";
 var pair="<tr><th data-priority=\"1\"><center>Id</center></th><th data-priority=\"1\"><center>Name</center></th><th data-priority=\"2\"><center>Email</center></th><th><center>Update</center></th><th><center>Delete</center></th></tr>";
 var i=0;
 
-//<!--results.rows.length to get the total number of rows stored in the database-->
+//<!--results.rows.length para obtener el número total de filas almacenadas en la base de datos-->
 var len = results.rows.length, i;
 for (i=0; i<=len-1; i++) {
 
@@ -45,7 +45,7 @@ key = results.rows.item(i).name;
 //<!--Fetching the 'id' from the database-->
 id = results.rows.item(i).id;
 
-//<!--Displaying all rows of the database in the table-->
+//<!--Mostrar todas las filas de la base de datos en la tabla-->
 pair += "<tr><td><center>"+id+"</center></td><td><center>"+key+"</center></td><td><center>"+results.rows.item(i).email+"</center></td><td><a class=\"update\" href=\"#myPopupDialog\" data-custom="+"'"+ id+ "'" +"data-rel=\"popup\" data-position-to=\"window\" data-transition=\"pop\"><center><i class='fa fa-pencil-square-o'></i></center></a></td><td><a id=\"delete\" data=\""+id+"\"><center><i class='fa fa-trash'></i></center></a></td></tr>";
 }
 if (pair == "<tr><th>Name</th><th>Email</th></tr>") {
@@ -56,7 +56,7 @@ $("#myTable").html(pair);
 });
 }
 
-//<!--Method to delete any row from the database-->
+//<!--Método para eliminar cualquier fila de la base de datos-->
 $(document).on('click', '#delete', function(){
 var id = $(this).attr("data");
 db.transaction(function(transaction) {
@@ -70,7 +70,7 @@ function(error){
 });
 });
 
-//<!--Method to update the values of any row in the database-->
+//<!--Método para actualizar los valores de cualquier fila en la base de datos-->
 $(document).on('click', '#upd', function(){
 var id = $("#id").val();
 var name = $("#uname").val();
@@ -100,7 +100,7 @@ alert('Something went Wrong');
 });
 });
 
-//<!--Method to clear all rows from the database-->
+//<!--Método para borrar todas las filas de la base de datos-->
 $(document).on('click', '#clearall', function(){
 db.transaction(function(transaction) {
 transaction.executeSql("DELETE FROM mydata", [],
