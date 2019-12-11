@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Example</title>
+
+    <!--jQuery File : Library, Mobile Library, Cordova JS, SQLite Plugin JS and Customized JS File -->
+<script type="text/javascript" charset="utf-8" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="jquery.mobile-1.4.5.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+  <!--<script type="text/javascript" charset="utf-8" src="SQLitePlugin.js"></script>-->
+<script type="text/javascript" src="my.js"></script>
+
+<!--Stylesheet Files : jQuery Mobile CSS File, Customized CSS File and Font Awesome for icons -->
+<link rel="stylesheet" href="jquery.mobile-1.4.5.css">
+<link rel="stylesheet" href="my.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+</head>
+
+<!--Beginning of the Body-->
+<body>
+<div data-role="page">
+
+<!--Header Bar-->
+<div data-role="header" data-position="fixed" class="ui-header ui-bar-a ui-header-fixed slidedown" role="banner">
+<h1>Store Me</h1>
+</div>
+
+<!--Beginning of the Name and Email Field Div-->
+<div data-role="main" class="ui-content" id="main">
+<center><p id="heading">CRUD Operations Using SQLite Plugin</p></center>
+<center><img src="phonegap-sqlite-plugin-img.png"/></center>
+<div class="ui-grid-a">
+<div class="ui-block-a"><div class="ui-bar ui-bar-a">
+<center><label for="text-basic">Name</label></center>
+<input type="text" name="text-basic" id="name" placeholder="Name">
+</div></div>
+<div class="ui-block-b"><div class="ui-bar ui-bar-a">
+<center><label for="text-basic">Email</label></center>
+<input type="text" name="text-basic" id="email" placeholder="Email">
+</div></div>
+</div>
+<!--End of the Name and Email Field Div-->
+
+<!--Beginning of the Create and Clear All Div-->
+<fieldset class="ui-grid-a" id="btndiv">
+<div class="ui-block-a"><div class="ui-bar ui-bar-a">
+<a href="#" id ="creat" onclick="_create()">
+<center><i class="fa fa-pencil"> Create</i></center>
+</a></div>
+</div>
+<!--End of the Create and Clear All Button Div-->
+
+<!--Dialog Box when clicked on Clear All button-->
+<div class="ui-block-b"><div class="ui-bar ui-bar-a">
+<a id ="bt" href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow " >
+<center><i class="fa fa-scissors"> Clear All</i></center>
+</a></div>
+</div>
+</fieldset>
+<div data-role="popup" id="popupDialog" data-dismissible="false" style="max-width:400px;">
+<div data-role="header" data-theme="a">
+<h1>Clear All?</h1>
+</div>
+<div role="main" class="ui-content">
+<h3 class="ui-title">Are you sure you want to clear local storage?</h3>
+<center><b><p>This action cannot be undone.</p></b></center>
+<center> <a href="#" id ="clearall" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Yes! I'm Sure</a><a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a></center>
+</div>
+</div>
+<!-- End of the Clear All Dialog Box-->
+
+<!--Table Displaying Database Rows-->
+<table data-role="table" data-mode="reflow" class="ui-responsive ui-shadow" id="myTable">
+</table>
+
+<!--Dialog Box when clicked on update button-->
+<div data-role="main" class="ui-content">
+<div data-role="popup" id="myPopupDialog">
+<div data-role="header">
+<h1>Update</h1>
+</div>
+<div data-role="main" class="ui-content">
+<form method="post">
+<div class="ui-field-contain">
+<table id="utable">
+<tr>
+<td><label for="id">Id:</label></td>
+<td><input disabled="disabled" type="text" name="id" id="id" placeholder="Id" value=""></td>
+</tr>
+<tr>
+<td><label for="name">Name:</label></td>
+<td><input type="text" name="name" id="uname" placeholder="Name" value=""></td>
+</tr>
+<tr>
+<td><label for="email">Email:</label></td>
+<td><input type="email" name="email" id="uemail" placeholder="Enter Your New Email"></td>
+</tr>
+</table>
+</div>
+<center><a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" id="upd" data-transition="flow">Update</a> <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a>
+</center>
+</form>
+</div>
+</div>
+</div>
+</div>
+<!--End of the Update Dialog Box -->
+
+
+</body>
+<!--End of the Body-->
+</html>
