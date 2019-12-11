@@ -5,8 +5,8 @@
   <description>
       Esta es una App de PhoneGapp Files
   </description>
-  <author Angeles Esmeralda y Francisco de jesus " href="http://cordova.io">
-      
+  <author email="" href="http://cordova.io">
+     
   </author>
   <content src="index.html" />
   <plugin name="cordova-plugin-whitelist" spec="1.3.4" />
